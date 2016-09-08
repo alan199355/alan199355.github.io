@@ -33,7 +33,7 @@
 			</div>
 			<div class="use-cookies-message" >
 				<h4>This site uses cookies 
-				<a target="view_window" href="learn-more.php" >Learn More</a></h4>
+				<a target="view_window" href="learn-more.html" >Learn More</a></h4>
 			</div>
 			<div class="hide-message">
 				<h4>I Understand,hide this message.
@@ -79,13 +79,13 @@
 								<div class="container subnav-wrapper">
 									<ul>
 										<li class="item107">
-											<a href="translation.php">Translation</a>
+											<a href="translation.html">Translation</a>
 										</li>
 										<li class="item109">
-											<a href="interpretation.php">Interpretation</a>
+											<a href="interpretation.html">Interpretation</a>
 										</li>
 										<li class="item108">
-											<a href="Value-added-services.php">Value added services</a>
+											<a href="Value-added-services.html">Value added services</a>
 										</li>
 									</ul>
 								</div>
@@ -100,16 +100,16 @@
 						  <div class="container subnav-wrapper">
 									<ul>
 										<li class="item114">
-											<a href="about.php">About Lan-bridge</a>
+											<a href="about.html">About Lan-bridge</a>
 										</li>
 										<li class="item105">
-											<a href="meet-the-team.php">Meet the team</a>
+											<a href="meet-the-team.html">Meet the team</a>
 										</li>
 										<li class="item116">
-											<a href="blog-list.php">Blog</a>
+											<a href="blog-list.html">Blog</a>
 										</li>
 										<li class="item116">
-											<li><a href="transverbum-partners.php">Transverbum partners</a></li>
+											<li><a href="transverbum-partners.html">Transverbum partners</a></li>
 										</li>
 									</ul>
 								</div>
@@ -124,13 +124,13 @@
 								<div class="container subnav-wrapper">
 									<ul>
 										<li class="item115">
-											<a href="get-in-touch.php">Get in touch</a>
+											<a href="get-in-touch.html">Get in touch</a>
 										</li>
 										<li class="item105">
-											<a href="chinese-offices.php">Chinese offices</a>
+											<a href="chinese-offices.html">Chinese offices</a>
 										</li>
 										<li class="item116">
-											<a href="working.php">Working with Lan-bridge</a>
+											<a href="working.html">Working with Lan-bridge</a>
 										</li>
 									</ul>
 								</div>
@@ -138,7 +138,7 @@
 
 						</li>
 						<li class="item106">
-							<a href="get-a-quote.php">Get a quote</a>
+							<a href="get-a-quote.html">Get a quote</a>
 						</li>
 					</ul>
 
@@ -156,19 +156,19 @@
 		<div id="carousel-example-generic" class="carousel slide index_carousel">
 			<div class="carousel-inner" role="listbox">				
 				<div class="item active">
-					<img src="/images/banner03.JPG" alt="translation.php">
+					<img src="/images/banner03.JPG" alt="translation.html">
 					<div class="carousel-caption carousel_caption_uk1">
 						<p>Language connects the world</p>
 					</div>
 				</div>
 				<div class="item">
-					<img src="/images/banner02.JPG" alt="interpretation.php">
+					<img src="/images/banner02.JPG" alt="interpretation.html">
 					<div class="carousel-caption carousel_caption_uk2">
 						<p>Lanuage connects the world</p>
 					</div>
 				</div>
 				<div class="item">
-					<img src="/images/banner01.JPG" alt="Value-added-services.php">         
+					<img src="/images/banner01.JPG" alt="Value-added-services.html">         
 					<div class="carousel-caption carousel_caption_uk3">
 						<p>Language connects the world</p>
 					</div>
@@ -385,7 +385,7 @@ $("document").ready(function(){
 			interval:false
 		});
 	$("#captcha_img,#interpretation_captcha_img").bind("click",function(){
-		this.src="./captcha.php?r="+Math.random();
+		this.src="./captcha.html?r="+Math.random();
 
 	});
 	$(".index_carousel img").bind("click",function(){
@@ -402,7 +402,7 @@ $("document").ready(function(){
 			$(this).addClass("focused");
 			$(this).find(".focused_arrow").show();
 			$(this).find(".arrow").hide();
-			window.open("get-a-quote.php?"+url);
+			window.open("get-a-quote.html?"+url);
 	});
 	if($.cookie("about_cookie")==null){
 		$.cookie("about_cookie","show",{expires:7});	
@@ -438,23 +438,23 @@ $("document").ready(function(){
 	<div class="container" id="footer_container">
 		<div class="col-sm-2 footer-box" >
 			<h2 class="title-medium">Service</h2>
-			<p><a href="translation.php">Translation</a></p>
-			<p><a href="interpretation.php">Interpretation</a></p>
-			<!-- <p><a href="Branding-and-design.php">Branding and Design</a></p> -->
-			<p><a href="value-added-services.php">Value added services</a></p>
+			<p><a href="translation.html">Translation</a></p>
+			<p><a href="interpretation.html">Interpretation</a></p>
+			<!-- <p><a href="Branding-and-design.html">Branding and Design</a></p> -->
+			<p><a href="value-added-services.html">Value added services</a></p>
 		</div>
 		<div class="col-sm-2 footer-box" >
 			<h2 class="title-medium">About us</h2>
-			<p><a href="about.php">About Lan-bridge</a></p>
-			<p><a href="meet-the-team.php">Meet the team</a></p>
-			<p><a href="blog-list.php">Blog</a></p>
-			<p><a href="transverbum-partners.php">Transverbum Membership</a></p>
+			<p><a href="about.html">About Lan-bridge</a></p>
+			<p><a href="meet-the-team.html">Meet the team</a></p>
+			<p><a href="blog-list.html">Blog</a></p>
+			<p><a href="transverbum-partners.html">Transverbum Membership</a></p>
 		</div>
 		<div class="col-sm-2 footer-box" >
 			<h2 class="title-medium">Contact us</h2>
-			<p><a href="get-in-touch.php">Get in touch</a></p>
-			<p><a href="chinese-offices.php">Chinese offices</a></p>
-			<p><a href="working.php">Working with Lan-bridge</a></p>
+			<p><a href="get-in-touch.html">Get in touch</a></p>
+			<p><a href="chinese-offices.html">Chinese offices</a></p>
+			<p><a href="working.html">Working with Lan-bridge</a></p>
 			
 		</div>
 		<div class="col-sm-6 footer-box-address">
@@ -476,7 +476,7 @@ $("document").ready(function(){
 				<span class="col-xs-6">
 					<img src="images/u135.png"/>
 				</span>
-				<p><a target="view_window" href="privacy-policy.php">Privacy Policy & Terms of use</a></p>
+				<p><a target="view_window" href="privacy-policy.html">Privacy Policy & Terms of use</a></p>
 			</div>
 		</div>
 		<div style="display:none;" class="col-sm-4 footer-box">
