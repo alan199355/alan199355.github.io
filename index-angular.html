@@ -41,7 +41,7 @@
 			app.controller('myController2',function($scope,$location,$http){
 				$scope.names=[{name:'ye'},{name:'qiang'},{name:"yeqiang"}];
 				// $test=$scope.name_model;
-				$http.get(Customers_JSON.php).success(function(response){
+				$http.get("Customers_JSON.php").success(function(response){
 					$scope.name2=response.records;
 				});
 				
