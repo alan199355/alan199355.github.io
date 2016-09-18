@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="myApp">
 	<head>
 		<meta charset="utf-8">
 		<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
 	</head>
-	<body ng-app="myApp">
+	<body>
 		
 		<div ng-controller="myController2" ng-init="">
 			<p>Name:   <input type="text" ng-model="name_model"></p>
@@ -15,6 +15,8 @@
 					{{ x.name }}
 				</li>
 			</ul>
+			<select ng-model="selectSites" ng-options="x for (x,y) in sites" name="" id=""></select>
+			<h1>You choose : {{ selectSites }}</h1>
 		</div>
 
 		<div ng-controller="myController">
@@ -23,11 +25,19 @@
 					{{ x | uppercase }}  {{ lastname }}
 				</li>
 			</ul>
+
 		</div>
 
 		<script>
 			var app=angular.module('myApp',[]);
-			
+			// app.all('*', function (req, res, next) {
+			//     res.header("Access-Control-Allow-Origin", "*");
+			//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+			//     res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
+			//     res.header("X-Powered-By", ' 3.2.1');
+			//     res.header("Content-Type", "application/json;charset=utf-8");
+			//     next();
+			// });
 			app.controller('myController',function($scope,$rootScope){
 				$scope.person=["yeqiang","ye","qiang","yeqiang"];
 				$rootScope.lastname="lastname";
@@ -41,6 +51,10 @@
 			app.controller('myController2',function($scope,$location,$http){
 				$scope.names=[{name:'ye'},{name:'qiang'},{name:"yeqiang"}];
 				// $test=$scope.name_model;
+				$scope.sites={
+					site1:"google",
+					site2:"baidu"
+				}
 				$http.get("Customers_JSON.php").success(function(response){
 					$scope.name2=response.records;
 				});
