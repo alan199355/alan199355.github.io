@@ -3,16 +3,95 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="device-width,intial-sclae=1,maximum-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 		
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/index.css">
+		<link rel="stylesheet" href="css/jquery.fullPage.css" />
 	</head>
 	<body>
 		<!-- header start -->
+		
 		<header>
-			
+			<div class="head-logo">
+				<img class="img-circle" src="image/tx.jpg" alt="">
+			</div>
+			<nav>
+				<ul>
+					<li><a href="">首页</a></li>
+					<li><a href="">随笔</a></li>
+					<li><a href="">积淀</a></li>
+					<li><a href="">关于</a></li>
+				</ul>
+			</nav>
 		</header>
 		<!-- header end -->
-
+		
+		<!-- full page -->
+		<div id="full_page">
+			<div class="section one">
+				<div id="home">
+					<div id="home_content">
+						<div id="home_head">
+							<div id="home_head_content">
+								<img src="image/tx.jpg" alt="">
+							</div>
+						</div>
+						<div id="home_info">
+							<p id="home_info1">
+								This is a test sentence
+							</p>
+							<div id="home_info_box">
+								<p id="home_info2">叶强</p>
+								<p id="home_info3">23</p>
+								<p id="home_info4">前端开发</p>
+								<p id="home_info5">2271088240@qq.com</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="section two">
+				
+			</div>
+		</div>
+		<!-- full page end -->
 		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.fullPage.min.js"></script>
+		<script src="js/jquery.easing.min.js"></script>
+		<script>
+			$(function(){
+				$("#full_page").fullpage({
+					scrollingSpeed:400,
+					css3:true,
+					resize:true,
+					verticalCentered:false,
+					afterRender:function(){
+					   $("#home").css({"display":"block"}).addClass("home_zoom");
+						$("header").before("<div id='header' style='opacity:0'></div>");
+						// $("#home_head").css({"margin-top":"100px"});
+						$("header").animate({opacity:"1"},1000,function(){
+							$("#header").css({"opacity":"0.5"});
+							$("#home_info1").fadeIn(700,function(){
+								$(this).next().animate({width:"800px"},700,function(){
+									$("#home_info2").fadeIn(450,function(){
+										$(this).next().fadeIn(450,function(){
+											$(this).next().fadeIn(450,function(){
+												$(this).next().fadeIn(450,function(){
+													
+												});
+											});
+										});
+									});
+								});
+							});
+						});
+					},
+					afterLoad:function(){
+
+					}
+				});
+				$("#home_head").css({"margin-top":"100px"});
+			});
+		</script>
 	</body>
 </html>
