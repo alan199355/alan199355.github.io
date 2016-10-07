@@ -1,0 +1,28 @@
+﻿{
+	
+	"skill_info":"前端的学习需要持之以恒，知识深度与广度都很重要。而前端开发的重中之重就是原生javascript的理解，而如今的思路必需有模块化，组件化，工程化",
+	"angularJs":[
+		"使用angularJs+ionic进行移动端开发",
+		"对模块里的代码都尽量做到组件化",
+		"了解双绑的背后实现",
+		"熟悉相关指令"
+	],
+	"html":[
+		"深刻理解Web标准",
+		"熟练运用html标签",
+		"熟悉xml及xhtml标记语言",
+		"掌握html5如canvas，localstorage新特性"
+	],
+	"css":[
+		"熟练运用css及css3新属性",
+		"注重浏览器兼容性，熟悉常见的css hack",
+		"熟悉bootstrap框架"
+		
+	],
+	"javaScript":[
+		"掌握jQuery",
+		"掌握原生JS的编程",
+		"注重JavaScript性能优化",
+		"正在学习ES6"
+	]
+}
