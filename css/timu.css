@@ -1,0 +1,259 @@
+body{
+	line-height: 44px;
+	/*background: #8b7e66;*/
+}
+p{
+	line-height: 60px;
+}
+#wrapper{
+	width: 800px;
+	height: 300px;
+	margin: 0 auto;
+	font-size: 20px;
+	overflow: scroll;
+	position: relative;
+	
+}
+#navigator_menu{
+	width: 800px;
+	height: 700px;
+	margin: 10px auto;
+	border: 1px solid;
+	
+	position: relative;
+}
+#header{
+	width: 800px;
+	height: 50px;
+	margin: 0 auto;
+	border: 1px solid;
+	background-color: #f5f5f5;
+	margin: 10px auto;
+}
+#reportCard{
+	width: 840px;
+	height: 500px;
+	position: absolute;
+	left: 250px;
+	top: 75px;
+	display: ;
+	background: #fff;
+	z-index: 100;
+	display: none;
+}
+#reportCard h1{
+	text-align: center;
+}
+#reportCard table{
+	margin: 0 auto;
+}
+#article_1{
+	height: 300px;
+	width: 600px;
+	margin: 0 auto;
+	font-size: 20px;
+}
+.answer_wrapper{
+	display:inline-block;
+	width:120px;
+	height:40px;
+
+}
+.answer{
+	height: 20px;
+	width: 120px;
+	display: inline-block;
+	border-bottom: 1px solid;
+	padding-bottom: 19px;
+	text-align: center;
+	
+}
+.answer_selected{
+	height: 20px;
+	width: 120px;
+	display: inline-block;
+	border-bottom: 1px solid;
+	background-color: #00bfff;
+	padding-bottom: 19px;
+	text-align: center;
+}
+.answer_finished{
+	height: 20px;
+	width: 120px;
+	display: inline-block;
+	border-bottom: 1px solid;
+	padding-bottom: 19px;
+	text-align: center;
+	color: #00bfff;
+}
+.answer_false{
+	height: 20px;
+	width: 120px;
+	display: inline-block;
+	border-bottom: 1px solid;
+	padding-bottom: 19px;
+	text-align: center;
+	color: red;
+	text-decoration: line-through;
+	background-color: #bcbcbc;
+}
+.answer_right{
+	height: 20px;
+	width: 120px;
+	display: inline-block;
+	border-bottom: 1px solid;
+	padding-bottom: 19px;
+	text-align: center;
+	color: #00bfff;
+}
+.answer_correct{
+	height: 20px;
+	width: 130px;
+	display: inline-block;
+	border-bottom: 1px solid;
+	background-color: #00bfff;
+	padding-bottom: 19px;
+	text-align: center;
+	position: relative;
+	left: 10px;
+	color: #fff;
+}
+.answer_empty{
+	height: 20px;
+	width: 120px;
+	display: inline-block;
+	border-bottom: 1px solid;
+	padding-bottom: 19px;
+	text-align: center;
+	text-decoration: line-through;
+	color: red;
+}
+.option_menu{
+	font-size: 20px;
+	text-decoration: none;
+}
+.option_menu_wrapper{
+	width: 30px;
+	height: 30px;
+	margin: 0 auto;
+	background-color: #cdcdb4;
+	text-align: center;
+	display: block;
+}
+.option_menu_selected{
+	width: 30px;
+	height: 30px;
+	margin: 0 auto;
+	background-color: #00bfff;
+	text-align: center;
+	display: block;
+}
+.option_menu_right{
+	width: 30px;
+	height: 30px;
+	margin: 0 auto;
+	background-color: #00bfff;
+	text-align: center;
+	display: block;	
+}
+.option_menu_false{
+	width: 30px;
+	height: 30px;
+	margin: 0 auto;
+	background-color: red;
+	text-align: center;
+	display: block;
+}
+.trianDisplay{
+	height: 0px;
+	width: 0px;
+	border: 8px solid #000;
+	margin: 0 auto;
+	border-color: transparent transparent #000 transparent;
+	display: ;
+	position: relative;
+}
+.trianHide{
+	height: 0px;
+	width: 0px;
+	border: 8px solid #000;
+	margin: 0 auto;
+	border-color: transparent transparent #000 transparent;
+	display: none;
+}
+
+.answerText{
+	text-align: center;
+	font-size: 20px;
+}
+.answertext_selected{
+	text-align: center;
+	font-size: 20px;
+	text-decoration: line-through;	
+}
+#handIn{
+	background-color: #f5f5f5;
+	width: 60px;
+	height: 30px;
+	border: 1px solid;
+	opacity: ;
+	position:relative;
+	left:720px;
+	border-radius:5px;
+}
+.report_correct{
+	width: 100px;
+	text-align:center;
+	font-size:30px;
+	color:#00bfff;
+}
+.report_false{
+	width: 100px;
+	text-align: center;
+	font-size: 30px;
+	color: red;
+}
+.report_check{
+	width: 250px;
+	height: 40px;
+	background-color: #fff;
+	border-radius: 20px;
+	border: 1px solid;
+	color: #00bfff;
+	position: relative;
+	top: 50px;
+	left: 70px;
+}
+.report_back{
+	width: 250px;
+	height: 40px;
+	background-color: #fff;
+	border-radius: 20px;
+	border: 1px solid;
+	color: #00bfff;
+	position: relative;
+	top: 50px;
+	left: 270px;
+}
+.answer_explation_display{
+	width:300px;
+	height:400px;
+	border:1px solid;
+	position:relative;
+	left:20px;
+	top:40px;
+	display:;
+}
+.answer_explation_hide{
+	width:300px;
+	height:400px;
+	border:1px solid;
+	position:relative;
+	left:20px;
+	top:40px;
+	display: none;
+}
+#answer_option{
+	margin: 30px auto;
+	display: ;
+}
