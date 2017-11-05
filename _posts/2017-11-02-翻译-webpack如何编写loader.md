@@ -70,4 +70,14 @@ loader一般会返回1到2个值。第一个值是js代码的运行结果，以s
 loader应该只完成单个任务。这不仅让维护每个loader的工作更简单，同时也允许loaders在更多的场景为不同的需求以链式调用。
 ### 链式
 必须注意到loaders是可以通过链式调用的。与其用一个loader处理5个任务，不如用5个loader分解工作量。将它们分割不仅让每个独立的loader保证简单，而且在有些场景下会以意想不到的方式调用。  
-用通过loader options或query parameters来指定数据并渲染模板文件的功能举例。这个功能可以写成一个loader，这个loader从源文件编译模板、执行然后返回一个导出一段包含HTML代码的字符串的模块。
+用通过loader options或query parameters来指定数据源并渲染模板文件的功能举例。这个功能可以写成一个loader，这个loader从源文件编译模板、执行然后返回一个导出一段包含HTML代码的字符串的模块。然而，按照指导方针，可以用一个简单的`apply-loader`和其它的开源loader以链式的方法调用：  
+- `jade-loader`:将模板转换成一个导出方法的模块
+- `apply-loader`:根据loader options执行方法并返回原始的HTML
+- `html-loader`:接收HTML并输出合法的JS模块。  
+*loaders可以通过链式调用也意味着他们不需要必须输出JS。因为链式中的下一个loder可以处理它的输出，所以loader可以返回任何形式的模块*
+### 模块化
+保证输出模块化。loader产生的模块应该和正常的模块按照一样的设计原则。
+### 无状态
+保证loader在模块转换时没有状态。每次运行都应该是独立的。
+### 公共loader
+
