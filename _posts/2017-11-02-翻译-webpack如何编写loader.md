@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "如何编写loader"
+title:      "翻译-如何编写loader"
 date:       2017-11-02
 author:     "Yeqiang"
 tags:
