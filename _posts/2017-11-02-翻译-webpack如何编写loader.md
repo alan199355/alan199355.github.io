@@ -37,12 +37,12 @@ resolveLoader: {
 ### 简单的用法
 当一个单独的loader应用到文件中时，这个loader仅通过一个参数被调用--一个包含这个文件全部内容的字符串。  
 同步的loaders会返回一个转换后的模块的值。在更复杂的情况下，loader会通过`this.callback(err,values)`方法返回若干个返回值。在同步的loader中，错误消息会通过`this.callback`方法传递或者被throw。  
-loader一般会返回1到2个值。第一个值是js代码的运行结果，以string或buffer的形式。第二个值是js对象的SourceMap。
+loader一般会返回1到2个值。第一个值是js代码的运行结果，以string或buffer的形式。第二个值是js对象的SourceMap。  
 ### 复杂的用法
 当多个loaders以链式调用时，需要重点记住loaders是以相反的顺序执行的，不管是从右向左或从下往上的形式。
 - 最后一个loader，叫做第一个，会传入资源文件的原始值
 - 第一个loader，叫做最后一个，应该返回js和可选的source map
-- 中间的loader会根据之前的loader的结果来执行
+- 中间的loader会根据之前的loader的结果来执行  
 因此，在下面的例子中，`foo-loader`会接收原始文件而`bar-loader`会接收`foo-loader`的输出然后返回最终转换后的模块并按需返回source map。
 <br>**webpack.config.js**
 ```
