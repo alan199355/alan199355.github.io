@@ -54,6 +54,7 @@ loader一般会返回1到2个值。第一个值是js代码的运行结果，以s
   ]
 }
 ```
+
 ### 指导方针
 在开发loader时，应当遵循下列方针。这些方针以重要性排序，其中一些只在特定的场景下适用，想了解更多请阅读详情部分。
 - 保持loader**简单**
@@ -102,7 +103,7 @@ export default function(source) {
 
   // Apply some transformations to the source...
 
-  return `export default ${ JSON.stringify(source) }`;
+  return export default ${ JSON.stringify(source) };
 };
 ```
 ### loader依赖
