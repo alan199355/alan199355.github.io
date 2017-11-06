@@ -80,4 +80,67 @@ loader应该只完成单个任务。这不仅让维护每个loader的工作更�
 ### 无状态
 保证loader在模块转换时没有状态。每次运行都应该是独立的。
 ### 公共loader
+好好利用[loader-utils](https://github.com/webpack/loader-utils)包。它提供了许多有用的工具，但其中最重要的功能是能够返回传递给loader的参数。除了`loader-utils`，[schema-utils](https://github.com/webpack-contrib/schema-utils)包应该在loader的参数是完全的、合法的JSON结构的情况下使用。以下是一个简单的例子。  
+**loader.js**
+```
+import { getOptions } from 'loader-utils';
+import { validateOptions } from 'schema-utils';
 
+const schema = {
+  type: object,
+  properties: {
+    test: {
+      type: string
+    }
+  }
+}
+
+export default function(source) {
+  const options = getOptions(this);
+
+  validateOptions(schema, options, 'Example Loader');
+
+  // Apply some transformations to the source...
+
+  return `export default ${ JSON.stringify(source) }`;
+};
+```
+### loader依赖
+如果一个loader引用了外部的资源（例如，读取文件），那就**必须**声明这一点。这个声明是为了在监听状态下停止缓存的loaders并重新编译。以下是一个简单的例子，如何用`addDependency`方法完成这个功能。  
+**loader.js**
+```
+import path from 'path';
+
+export default function(source) {
+  var callback = this.async();
+  var headerPath = path.resolve('header.js');
+
+  this.addDependency(headerPath);
+
+  fs.readFile(headerPath, 'utf-8', function(err, header) {
+    if(err) return callback(err);
+    callback(null, header + "\n" + source);
+  });
+};
+```
+### 模块依赖
+根据模块的不同，可能有不同的方式来引用依赖。用CSS来举个例子，有`@import`和`url(...)`语句。这些依赖应该被模块系统所接收。  
+这可以有以下两种方式：
+- 都转换成`require`语句
+- 使用`this.resolve`方法来接收路径
+对第一个方法，`css-loader`是一个很好的例子，它使用`require`来引用依赖，在引用其它样式表时用`require`来替换`@import`，以及在引用其它文件时用`require`来替换`url(...)`  
+以`less-loader`举例，它不能将每一个`@import`转换成`require`，因为所有的`.less`文件都在one pass for variables and mixin tracking 的情况下编译。因此，`less-loader`使用path resolving来延长less编译。然后再使用第二种方法，通过webpack使用`this.resolve`来解决依赖
+### 共用代码
+在loader运行过程中，避免在每一个模块中都生成同样的代码。相反的，创建一个运行时文件然后用`requrie`来引用它。
+### 绝对路径
+编译在模块代码中使用绝对路径，因为当项目的根目录更改时会破坏哈希值。
+在`loader-utils`中有一个[stringifyRequest](https://github.com/webpack/loader-utils#stringifyrequest)方法可以将绝对路径转换成相对路径
+### 同级依赖
+如果你正在使用的loader只是对其它包进行了简单的包装，那你应该以`peerDependency`的形式将包包括进来。这个措施让应用的开发者在需要的情况下可以在`package.json`中修改成指定的版本。
+举个例子，`sass-loader`指定[node-sass](https://github.com/webpack-contrib/sass-loader/blob/master/package.json)作为同级依赖，就像这样：
+```
+"peerDependencies": {
+  "node-sass": "^4.0.0"
+}
+```
+### 测试
