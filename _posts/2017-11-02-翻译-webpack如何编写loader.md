@@ -144,3 +144,4 @@ export default function(source) {
 }
 ```
 ### 测试
+现在你已经根据前面的指导意见写好了一个loader，并且在本地运行起来了。然后呢？让我们进行一个简单的单元测试来保证我们的loader可以按照我们的期望工作。我们将使用[Jest](https://facebook.github.io/jest/)框架来完成这个工作。
