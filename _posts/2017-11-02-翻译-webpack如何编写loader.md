@@ -148,4 +148,111 @@ export default function(source) {
 }
 ```
 ### 测试
-现在你已经根据前面的指导意见写好了一个loader，并且在本地运行起来了。然后呢？让我们进行一个简单的单元测试来保证我们的loader可以按照我们的期望工作。我们将使用[Jest](https://facebook.github.io/jest/)框架来完成这个工作。
+现在你已经根据前面的指导意见写好了一个loader，并且在本地运行起来了。然后呢？让我们进行一个简单的单元测试来保证我们的loader可以按照我们的期望工作。我们将使用[Jest](https://facebook.github.io/jest/)框架来完成这个工作。我们同样将安装`babel-jest`以及一些presets，从而让我们可以用`import`/`export`以及`async`/`await`方法。让我们先从按照并将这些包作为`devDependencies`开始。
+```
+npm i --save-dev jest babel-jest babel-preset-env
+```
+.babelrc
+```
+{
+  "presets": [[
+    "env",
+    {
+      "targets": {
+        "node": "4"
+      }
+    }
+  ]]
+}
+```
+我们的loader会处理`.txt`文件并将所有的`[name]`替换成传递给loader的参数中的`name`值。然后会生成一个默认导出其所含文本的合法的js模块。  
+src/loader.js
+```
+import { getOptions } from 'loader-utils';
+
+export default source => {
+  const options = getOptions(this);
+
+  source = source.replace(/\[name\]/g, options.name);
+
+  return `export default ${ JSON.stringify(source) }`;
+};
+```
+我们会用这个loader来处理下面这个文件：  
+test/example.txt
+```
+Hey [name]!
+```
+仔细看我们接下来的步骤，我们会使用[Node.js API](https://doc.webpack-china.org/api/node)和[memory-fs](https://github.com/webpack/memory-fs)来执行webpack。这可以让我们避免将`输出`发送到硬盘中并让我们能够访问到可以用来grab我们已改造后的模块的`统计`数据：  
+```
+npm i --save-dev webpack memory-fs
+```
+test/compiler.js
+```
+import path from 'path';
+import webpack from 'webpack';
+import memoryfs from 'memory-fs';
+
+export default (fixture, options = {}) => {
+  const compiler = webpack({
+    context: __dirname,
+    entry: `./${fixture}`,
+    output: {
+      path: path.resolve(__dirname),
+      filename: 'bundle.js',
+    },
+    module: {
+      rules: [{
+        test: /\.txt$/,
+        use: {
+          loader: path.resolve(__dirname, '../src/loader.js'),
+          options: {
+            name: 'Alice'
+          }
+        }
+      }]
+    }
+  });
+
+  compiler.outputFileSystem = new memoryfs();
+
+  return new Promise((resolve, reject) => {
+    compiler.run((err, stats) => {
+      if (err) reject(err);
+
+      resolve(stats);
+    });
+  });
+}
+```
+*在这个例子中，我们将webpack的配置内联在一起，你也可以通过参数的方式为导出的方法传递参数。这让你可以用同一个编译模块测试不同的设置。*
+现在，我们终于可以写我们的测试代码并添加到npm script中：  
+test/loader.test.js
+```
+import compiler from './compiler.js';
+
+test('Inserts name and outputs JavaScript', async () => {
+  const stats = await compiler('example.txt');
+  const output = stats.toJson().modules[0].source;
+
+  expect(output).toBe(`export default "Hey Alice!\\n"`);
+});
+```
+package.json
+```
+"scripts": {
+  "test": "jest"
+}
+```
+一切就绪，我们可以运行并看到我们的新loader是否通过测试：
+```
+PASS  test/loader.test.js
+  ✓ Inserts name and outputs JavaScript (229ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        1.853s, estimated 2s
+Ran all test suites.
+```
+它成功了！到了这一步，你应该准备好开始开发、测试、部署你自己的loader了。我们希望你能向社区的其它人分享你的创作。
