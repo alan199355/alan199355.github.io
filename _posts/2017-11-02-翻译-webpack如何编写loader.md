@@ -75,15 +75,16 @@ loader应该只完成单个任务。这不仅让维护每个loader的工作更�
 用通过loader options或query parameters来指定数据源并渲染模板文件的功能举例。这个功能可以写成一个loader，这个loader从源文件编译模板、执行然后返回一个导出一段包含HTML代码的字符串的模块。然而，按照指导方针，可以用一个简单的`apply-loader`和其它的开源loader以链式的方法调用：  
 - `jade-loader`:将模板转换成一个导出方法的模块
 - `apply-loader`:根据loader options执行方法并返回原始的HTML
-- `html-loader`:接收HTML并输出合法的JS模块。  
-*loaders可以通过链式调用也意味着他们不需要必须输出JS。因为链式中的下一个loder可以处理它的输出，所以loader可以返回任何形式的模块*
+- `html-loader`:接收HTML并输出合法的JS模块。    
+
+*loaders可以通过链式调用也意味着他们不需要必须输出JS。因为链式中的下一个loder可以处理它的输出，所以loader可以返回任何形式的模块*  
 ### 模块化
 保证输出模块化。loader产生的模块应该和正常的模块按照一样的设计原则。
 ### 无状态
 保证loader在模块转换时没有状态。每次运行都应该是独立的。
 ### 公共loader
-好好利用[loader-utils](https://github.com/webpack/loader-utils)包。它提供了许多有用的工具，但其中最重要的功能是能够返回传递给loader的参数。除了`loader-utils`，[schema-utils](https://github.com/webpack-contrib/schema-utils)包应该在loader的参数是完全的、合法的JSON结构的情况下使用。以下是一个简单的例子。  
-**loader.js**
+好好利用[loader-utils](https://github.com/webpack/loader-utils)包。它提供了许多有用的工具，但其中最重要的功能是能够返回传递给loader的参数。除了`loader-utils`，[schema-utils](https://github.com/webpack-contrib/schema-utils)包应该在loader的参数是完全的、合法的JSON结构的情况下使用。以下是一个简单的例子。
+<br>**loader.js**
 ```
 import { getOptions } from 'loader-utils';
 import { validateOptions } from 'schema-utils';
