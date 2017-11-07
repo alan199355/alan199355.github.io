@@ -110,7 +110,7 @@ export default function(source) {
 ```
 ### loader依赖
 如果一个loader引用了外部的资源（例如，读取文件），那就**必须**声明这一点。这个声明是为了在监听状态下停止缓存的loaders并重新编译。以下是一个简单的例子，如何用`addDependency`方法完成这个功能。  
-**loader.js**
+<br>**loader.js**
 ```
 import path from 'path';
 
@@ -140,7 +140,7 @@ export default function(source) {
 在`loader-utils`中有一个[stringifyRequest](https://github.com/webpack/loader-utils#stringifyrequest)方法可以将绝对路径转换成相对路径
 ### 同级依赖
 如果你正在使用的loader只是对其它包进行了简单的包装，那你应该以`peerDependency`的形式将包包括进来。这个措施让应用的开发者在需要的情况下可以在`package.json`中修改成指定的版本。
-举个例子，`sass-loader`指定[node-sass](https://github.com/webpack-contrib/sass-loader/blob/master/package.json)作为同级依赖，就像这样：
+举个例子，`sass-loader`指定[node-sass](https://github.com/webpack-contrib/sass-loader/blob/master/package.json)作为同级依赖，就像这样：  
 ```
 "peerDependencies": {
   "node-sass": "^4.0.0"
