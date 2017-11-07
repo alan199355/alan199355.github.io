@@ -130,9 +130,10 @@ export default function(source) {
 根据模块的不同，可能有不同的方式来引用依赖。用CSS来举个例子，有`@import`和`url(...)`语句。这些依赖应该被模块系统所接收。  
 这可以有以下两种方式：
 - 都转换成`require`语句
-- 使用`this.resolve`方法来接收路径
+- 使用`this.resolve`方法来接收路径  
+
 对第一个方法，`css-loader`是一个很好的例子，它使用`require`来引用依赖，在引用其它样式表时用`require`来替换`@import`，以及在引用其它文件时用`require`来替换`url(...)`  
-以`less-loader`举例，它不能将每一个`@import`转换成`require`，因为所有的`.less`文件都在one pass for variables and mixin tracking 的情况下编译。因此，`less-loader`使用path resolving来延长less编译。然后再使用第二种方法，通过webpack使用`this.resolve`来解决依赖
+以`less-loader`举例，它不能将每一个`@import`转换成`require`，因为所有的`.less`文件都在one pass for variables and mixin tracking 的情况下编译。因此，`less-loader`使用path resolving来延长less编译。然后再使用第二种方法，通过webpack使用`this.resolve`来解决依赖  
 ### 共用代码
 在loader运行过程中，避免在每一个模块中都生成同样的代码。相反的，创建一个运行时文件然后用`requrie`来引用它。
 ### 绝对路径
