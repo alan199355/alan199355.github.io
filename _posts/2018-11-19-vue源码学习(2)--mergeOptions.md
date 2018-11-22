@@ -1,163 +1,14 @@
 ---
 layout: post
-title: "vue源码学习(一)--初始化"
-date: 2018-11-08
+title: "vue源码学习(2)--mergeOptions"
+date: 2018-11-19
 author: "Yeqiang"
 tags:
   - JS
 ---
 
-我们从最开始看起，首先看下 new Vue()时发生了什么。Vue 实际上是一个类，源码在`src/core/instance/index.js`中。
 
-```js
-import { initMixin } from "./init";
-import { stateMixin } from "./state";
-import { renderMixin } from "./render";
-import { eventsMixin } from "./events";
-import { lifecycleMixin } from "./lifecycle";
-import { warn } from "../util/index";
-
-function Vue(options) {
-  if (process.env.NODE_ENV !== "production" && !(this instanceof Vue)) {
-    warn("Vue is a constructor and should be called with the `new` keyword");
-  }
-  this._init(options);
-}
-
-initMixin(Vue);
-stateMixin(Vue);
-eventsMixin(Vue);
-lifecycleMixin(Vue);
-renderMixin(Vue);
-
-export default Vue;
-```
-
-在这里会判断是否通过 new 关键字初始化，然后调用\_init 方法，这个方法定义在`src/core/instance/init.js`中：
-
-```js
-Vue.prototype._init = function(options?: Object) {
-  const vm: Component = this;
-  // a uid
-  vm._uid = uid++;
-
-  let startTag, endTag;
-  /* istanbul ignore if */
-  if (process.env.NODE_ENV !== "production" && config.performance && mark) {
-    startTag = `vue-perf-start:${vm._uid}`;
-    endTag = `vue-perf-end:${vm._uid}`;
-    mark(startTag);
-  }
-
-  // a flag to avoid this being observed
-  vm._isVue = true;
-  // merge options
-  if (options && options._isComponent) {
-    // optimize internal component instantiation
-    // since dynamic options merging is pretty slow, and none of the
-    // internal component options needs special treatment.
-    initInternalComponent(vm, options);
-  } else {
-    vm.$options = mergeOptions(
-      resolveConstructorOptions(vm.constructor),
-      options || {},
-      vm
-    );
-  }
-  /* istanbul ignore else */
-  if (process.env.NODE_ENV !== "production") {
-    initProxy(vm);
-  } else {
-    vm._renderProxy = vm;
-  }
-  // expose real self
-  vm._self = vm;
-  initLifecycle(vm);
-  initEvents(vm);
-  initRender(vm);
-  callHook(vm, "beforeCreate");
-  initInjections(vm); // resolve injections before data/props
-  initState(vm);
-  initProvide(vm); // resolve provide after data/props
-  callHook(vm, "created");
-
-  /* istanbul ignore if */
-  if (process.env.NODE_ENV !== "production" && config.performance && mark) {
-    vm._name = formatComponentName(vm, false);
-    mark(endTag);
-    measure(`vue ${vm._name} init`, startTag, endTag);
-  }
-
-  if (vm.$options.el) {
-    vm.$mount(vm.$options.el);
-  }
-};
-```
-
-首先把 this 对象缓存到 vm 对象中，然后是 vm.\_uid，这是一个唯一标识，每次触发 init 都会递增。  
-然后是 startTag，endTag 这一段，这一段的目的是性能测试，源码出自`src/core/util/perf.js`
-
-```js
-import { inBrowser } from "./env";
-
-export let mark;
-export let measure;
-
-if (process.env.NODE_ENV !== "production") {
-  const perf = inBrowser && window.performance;
-  /* istanbul ignore if */
-  if (
-    perf &&
-    perf.mark &&
-    perf.measure &&
-    perf.clearMarks &&
-    perf.clearMeasures
-  ) {
-    mark = tag => perf.mark(tag);
-    measure = (name, startTag, endTag) => {
-      perf.measure(name, startTag, endTag);
-      perf.clearMarks(startTag);
-      perf.clearMarks(endTag);
-      perf.clearMeasures(name);
-    };
-  }
-}
-```
-
-这里用了`window.performance`来监测性能。  
-然后是 vm.\_isVue，这里根据注释的解释是一个标志，为了防止 this 被 observe 监听。这里的源码在`src/core/observer/index.js`
-
-```js
-/**
- * Attempt to create an observer instance for a value,
- * returns the new observer if successfully observed,
- * or the existing observer if the value already has one.
- */
-export function observe(value: any, asRootData: ?boolean): Observer | void {
-  if (!isObject(value) || value instanceof VNode) {
-    return;
-  }
-  let ob: Observer | void;
-  if (hasOwn(value, "__ob__") && value.__ob__ instanceof Observer) {
-    ob = value.__ob__;
-  } else if (
-    shouldObserve &&
-    !isServerRendering() &&
-    (Array.isArray(value) || isPlainObject(value)) &&
-    Object.isExtensible(value) &&
-    !value._isVue
-  ) {
-    ob = new Observer(value);
-  }
-  if (asRootData && ob) {
-    ob.vmCount++;
-  }
-  return ob;
-}
-```
-
-当\_isVue 为 true 时，不会新建 observer。  
-然后我们继续往下走，看到
+现在我们走到了`mergeOptions`这一步
 
 ```js
 // merge options
@@ -397,3 +248,107 @@ export function initLifecycle(vm: Component) {
 | \_isMounted | 当前实例是否完成挂载(对应生命周期图示中的 mounted) |
 | \_isDestroyed | 当前实例是否已经被销毁(对应生命周期图示中的 destroyed) |
 | \_isBeingDestroyed | 当前实例是否正在被销毁,还没有销毁完成(介于生命周期图示中 deforeDestroy 和 destroyed 之间) |
+`initLifeCycle(vm)`之后是`initEvents(vm)`函数，这个函数定义在`src/core/instance/events.js`中
+```js
+export function initEvents (vm: Component) {
+  vm._events = Object.create(null)
+  vm._hasHookEvent = false
+  // init parent attached events
+  const listeners = vm.$options._parentListeners
+  if (listeners) {
+    updateComponentListeners(vm, listeners)
+  }
+}
+```
+首先将vm.\_events属性赋值成一个空对象，`Object.create(null)`方法生成的对象不仅本身的值为空，且原型链上的属性和方法都没有。然后将\_hasHookEvent属性置为false，这个属性是判断是否有通过hook模式绑定的事件。然后是判断`_parentListeners`属性，这个属性是表示父组件绑定在当前组件上的事件，如果有就执行`updateComponentListeners`方法
+```js
+function add (event, fn, once) {
+  if (once) {
+    target.$once(event, fn)
+  } else {
+    target.$on(event, fn)
+  }
+}
+
+function remove (event, fn) {
+  target.$off(event, fn)
+}
+export function updateComponentListeners (
+  vm: Component,
+  listeners: Object,
+  oldListeners: ?Object
+) {
+  target = vm
+  updateListeners(listeners, oldListeners || {}, add, remove, vm)
+  target = undefined
+}
+```
+首先是将vm赋值给target保持对vm的引用，然后执行`updateListeners`方法，在看它之前我们先看下add，remove这两个参数，其实主要就是看下`$once`，`$on`，`$off`这三个方法。
+```js
+const hookRE = /^hook:/
+  Vue.prototype.$on = function (event: string | Array<string>, fn: Function): Component {
+    const vm: Component = this
+    if (Array.isArray(event)) {
+      for (let i = 0, l = event.length; i < l; i++) {
+        this.$on(event[i], fn)
+      }
+    } else {
+      (vm._events[event] || (vm._events[event] = [])).push(fn)
+      // optimize hook:event cost by using a boolean flag marked at registration
+      // instead of a hash lookup
+      if (hookRE.test(event)) {
+        vm._hasHookEvent = true
+      }
+    }
+    return vm
+  }
+
+  Vue.prototype.$once = function (event: string, fn: Function): Component {
+    const vm: Component = this
+    function on () {
+      vm.$off(event, on)
+      fn.apply(vm, arguments)
+    }
+    on.fn = fn
+    vm.$on(event, on)
+    return vm
+  }
+
+  Vue.prototype.$off = function (event?: string | Array<string>, fn?: Function): Component {
+    const vm: Component = this
+    // all
+    if (!arguments.length) {
+      vm._events = Object.create(null)
+      return vm
+    }
+    // array of events
+    if (Array.isArray(event)) {
+      for (let i = 0, l = event.length; i < l; i++) {
+        this.$off(event[i], fn)
+      }
+      return vm
+    }
+    // specific event
+    const cbs = vm._events[event]
+    if (!cbs) {
+      return vm
+    }
+    if (!fn) {
+      vm._events[event] = null
+      return vm
+    }
+    if (fn) {
+      // specific handler
+      let cb
+      let i = cbs.length
+      while (i--) {
+        cb = cbs[i]
+        if (cb === fn || cb.fn === fn) {
+          cbs.splice(i, 1)
+          break
+        }
+      }
+    }
+    return vm
+  }
+```
