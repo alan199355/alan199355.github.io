@@ -245,3 +245,48 @@ const hookRE = /^hook:/
     return vm
   }
 ```
+`$on`方法首先判断传入的events是否为数组，如果为数组，那么就遍历数组并递归调用`$on`方法，以确保传入的是字符串。然后将`vm.\_events[event]`置为数组并把fn传入。如果有通过hook方式绑定的方法，则把`\_hasHookEvent`属性置为true。最后返回实例对象。  
+`$once`方法调用了`$on`方法，通过在回调函数中调用`$off`方法实现了只执行一次的结果。  
+`$off`方法和`$on`方法一样，会判断events是否为数组，如果是就遍历递归调用。确保传入的是字符串。之后会判断这个事件的监听器，如果没有就不做操作。之后判断回调函数，如果不传回调，就移除所有监听器，如果传入了回调，就移除这个回调的监听器。之后统一返回实例对象。  
+现在我们在看看`updateListeners`这个方法
+```js
+export function updateListeners (
+  on: Object,
+  oldOn: Object,
+  add: Function,
+  remove: Function,
+  vm: Component
+) {
+  let name, def, cur, old, event
+  for (name in on) {
+    def = cur = on[name]
+    old = oldOn[name]
+    event = normalizeEvent(name)
+    /* istanbul ignore if */
+    if (__WEEX__ && isPlainObject(def)) {
+      cur = def.handler
+      event.params = def.params
+    }
+    if (isUndef(cur)) {
+      process.env.NODE_ENV !== 'production' && warn(
+        `Invalid handler for event "${event.name}": got ` + String(cur),
+        vm
+      )
+    } else if (isUndef(old)) {
+      if (isUndef(cur.fns)) {
+        cur = on[name] = createFnInvoker(cur)
+      }
+      add(event.name, cur, event.once, event.capture, event.passive, event.params)
+    } else if (cur !== old) {
+      old.fns = cur
+      on[name] = old
+    }
+  }
+  for (name in oldOn) {
+    if (isUndef(on[name])) {
+      event = normalizeEvent(name)
+      remove(event.name, oldOn[name], event.capture)
+    }
+  }
+}
+```
