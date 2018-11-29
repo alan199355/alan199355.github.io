@@ -2,215 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b695f2bc-524d-44dd-8237-292e713c14fa" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/LICENSE" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/README.md" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/demo/index.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/dist/README.md" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/dist/vue.common.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/dist/vue.esm.browser.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/dist/vue.esm.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/dist/vue.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/dist/vue.min.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/dist/vue.runtime.common.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/dist/vue.runtime.esm.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/dist/vue.runtime.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/dist/vue.runtime.min.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/package.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/compiler/codegen/events.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/compiler/codegen/index.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/compiler/create-compiler.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/compiler/directives/bind.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/compiler/directives/index.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/compiler/directives/model.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/compiler/directives/on.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/compiler/error-detector.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/compiler/helpers.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/compiler/index.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/compiler/optimizer.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/compiler/parser/entity-decoder.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/compiler/parser/filter-parser.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/compiler/parser/html-parser.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/compiler/parser/index.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/compiler/parser/text-parser.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/compiler/to-function.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/components/index.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/components/keep-alive.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/config.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/global-api/assets.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/global-api/extend.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/global-api/index.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/global-api/mixin.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/global-api/use.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/index.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/instance/events.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/instance/index.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/instance/init.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/instance/inject.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/instance/lifecycle.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/instance/proxy.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/instance/render-helpers/bind-object-listeners.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/instance/render-helpers/bind-object-props.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/instance/render-helpers/check-keycodes.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/instance/render-helpers/index.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/instance/render-helpers/render-list.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/instance/render-helpers/render-slot.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/instance/render-helpers/render-static.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/instance/render-helpers/resolve-filter.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/instance/render-helpers/resolve-slots.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/instance/render.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/instance/state.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/observer/array.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/observer/dep.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/observer/index.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/observer/scheduler.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/observer/traverse.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/observer/watcher.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/util/debug.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/util/env.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/util/error.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/util/index.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/util/lang.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/util/next-tick.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/util/options.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/util/perf.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/util/props.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/vdom/create-component.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/vdom/create-element.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/vdom/create-functional-component.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/vdom/helpers/extract-props.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/vdom/helpers/get-first-component-child.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/vdom/helpers/index.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/vdom/helpers/is-async-placeholder.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/vdom/helpers/merge-hook.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/vdom/helpers/normalize-children.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/vdom/helpers/resolve-async-component.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/vdom/helpers/update-listeners.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/vdom/modules/directives.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/vdom/modules/index.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/vdom/modules/ref.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/vdom/patch.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/core/vdom/vnode.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/web/compiler/directives/html.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/web/compiler/directives/index.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/web/compiler/directives/model.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/web/compiler/directives/text.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/web/compiler/index.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/web/compiler/modules/class.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/web/compiler/modules/index.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/web/compiler/modules/model.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/web/compiler/modules/style.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/web/compiler/options.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/web/compiler/util.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/web/entry-compiler.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/web/entry-runtime-with-compiler.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/web/entry-runtime.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/web/entry-server-basic-renderer.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/web/entry-server-renderer.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/web/runtime/class-util.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/web/runtime/components/index.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/web/runtime/components/transition-group.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/web/runtime/components/transition.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/web/runtime/directives/index.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/web/runtime/directives/model.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/web/runtime/directives/show.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/web/runtime/index.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/web/runtime/modules/attrs.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/web/runtime/modules/class.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/web/runtime/modules/dom-props.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/web/runtime/modules/events.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/web/runtime/modules/index.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/web/runtime/modules/style.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/web/runtime/modules/transition.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/web/runtime/node-ops.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/web/runtime/patch.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/web/runtime/transition-util.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/web/server/compiler.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/web/server/directives/index.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/web/server/directives/model.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/web/server/directives/show.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/web/server/modules/attrs.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/web/server/modules/class.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/web/server/modules/dom-props.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/web/server/modules/index.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/web/server/modules/style.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/web/server/util.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/web/util/attrs.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/web/util/class.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/web/util/compat.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/web/util/element.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/web/util/index.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/web/util/style.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/weex/compiler/directives/index.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/weex/compiler/directives/model.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/weex/compiler/index.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/weex/compiler/modules/append.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/weex/compiler/modules/class.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/weex/compiler/modules/index.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/weex/compiler/modules/props.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/weex/compiler/modules/recycle-list/component-root.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/weex/compiler/modules/recycle-list/component.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/weex/compiler/modules/recycle-list/index.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/weex/compiler/modules/recycle-list/recycle-list.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/weex/compiler/modules/recycle-list/text.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/weex/compiler/modules/recycle-list/v-bind.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/weex/compiler/modules/recycle-list/v-for.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/weex/compiler/modules/recycle-list/v-if.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/weex/compiler/modules/recycle-list/v-on.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/weex/compiler/modules/recycle-list/v-once.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/weex/compiler/modules/style.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/weex/entry-compiler.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/weex/entry-framework.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/weex/entry-runtime-factory.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/weex/runtime/components/index.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/weex/runtime/components/richtext.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/weex/runtime/components/transition-group.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/weex/runtime/components/transition.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/weex/runtime/directives/index.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/weex/runtime/index.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/weex/runtime/modules/attrs.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/weex/runtime/modules/class.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/weex/runtime/modules/events.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/weex/runtime/modules/index.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/weex/runtime/modules/style.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/weex/runtime/modules/transition.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/weex/runtime/node-ops.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/weex/runtime/patch.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/weex/runtime/recycle-list/render-component-template.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/weex/runtime/recycle-list/virtual-component.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/weex/runtime/text-node.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/weex/util/element.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/weex/util/index.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/platforms/weex/util/parser.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/server/bundle-renderer/create-bundle-renderer.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/server/bundle-renderer/create-bundle-runner.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/server/bundle-renderer/source-map-support.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/server/create-basic-renderer.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/server/create-renderer.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/server/optimizing-compiler/codegen.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/server/optimizing-compiler/index.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/server/optimizing-compiler/modules.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/server/optimizing-compiler/optimizer.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/server/optimizing-compiler/runtime-helpers.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/server/render-context.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/server/render-stream.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/server/render.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/server/template-renderer/create-async-file-mapper.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/server/template-renderer/index.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/server/template-renderer/parse-template.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/server/template-renderer/template-stream.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/server/util.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/server/webpack-plugin/client.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/server/webpack-plugin/server.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/server/webpack-plugin/util.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/server/write.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/sfc/parser.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/shared/constants.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/src/shared/util.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/types/index.d.ts" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/types/options.d.ts" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/types/plugin.d.ts" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/types/vnode.d.ts" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vue/types/vue.d.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/temp.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -224,8 +16,56 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="vue.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vue/dist/vue.js">
+      <file leaf-file-name="render.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vue/src/core/instance/render.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="86">
+              <caret line="25" column="26" lean-forward="false" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <element signature="e#13#111#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vue/src/core/observer/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-179">
+              <caret line="133" column="30" lean-forward="false" selection-start-line="133" selection-start-column="16" selection-end-line="133" selection-end-column="30" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <element signature="e#13#36#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="temp.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/temp.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3927">
+              <caret line="187" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="187" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="debug.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vue/src/core/util/debug.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-27">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vue/src/core/util/index.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -236,12 +76,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/vue/demo/index.html">
+      <file leaf-file-name="util.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vue/src/shared/util.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="285">
+              <caret line="58" column="18" lean-forward="false" selection-start-line="58" selection-start-column="9" selection-end-line="58" selection-end-column="18" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -251,7 +93,6 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>eventsMixin</find>
-      <find>isPlainObject</find>
       <find>Dep</find>
       <find>queueWatcher</find>
       <find>defineReactive</find>
@@ -264,6 +105,8 @@
       <find>updateL</find>
       <find>initRender</find>
       <find>emptyObject</find>
+      <find>isUpdatingChildComponent</find>
+      <find>isPlainObject</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -279,6 +122,7 @@
         <option value="$PROJECT_DIR$/test/node_modules/vue/src/core/index.js" />
         <option value="$PROJECT_DIR$/test/node_modules/vue/demo/index.html" />
         <option value="$PROJECT_DIR$/test/node_modules/vue/dist/vue.js" />
+        <option value="$PROJECT_DIR$/temp.js" />
       </list>
     </option>
   </component>
@@ -353,6 +197,44 @@
               <item name="vue" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="alan199355.github.io" type="b2602c69:ProjectViewProjectNode" />
+              <item name="alan199355.github.io" type="462c0819:PsiDirectoryNode" />
+              <item name="vue" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="alan199355.github.io" type="b2602c69:ProjectViewProjectNode" />
+              <item name="alan199355.github.io" type="462c0819:PsiDirectoryNode" />
+              <item name="vue" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+              <item name="instance" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="alan199355.github.io" type="b2602c69:ProjectViewProjectNode" />
+              <item name="alan199355.github.io" type="462c0819:PsiDirectoryNode" />
+              <item name="vue" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+              <item name="observer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="alan199355.github.io" type="b2602c69:ProjectViewProjectNode" />
+              <item name="alan199355.github.io" type="462c0819:PsiDirectoryNode" />
+              <item name="vue" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="alan199355.github.io" type="b2602c69:ProjectViewProjectNode" />
+              <item name="alan199355.github.io" type="462c0819:PsiDirectoryNode" />
+              <item name="vue" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="shared" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -401,12 +283,12 @@
       <updated>1542870902384</updated>
       <workItem from="1542870903758" duration="364000" />
       <workItem from="1542871371842" duration="8656000" />
-      <workItem from="1543195026913" duration="8764000" />
+      <workItem from="1543195026913" duration="11786000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17784000" />
+    <option name="totallyTimeSpent" value="20806000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -455,105 +337,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/node_modules/vue/src/core/vdom/helpers/update-listeners.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="987">
-          <caret line="48" column="8" lean-forward="false" selection-start-line="48" selection-start-column="2" selection-end-line="48" selection-end-column="8" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-            <element signature="e#13#51#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/vue/src/core/instance/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#34#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/vue/src/core/vdom/helpers/update-listeners.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-            <element signature="e#13#51#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/vue/src/core/instance/events.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="47" column="53" lean-forward="false" selection-start-line="47" selection-start-column="53" selection-end-line="47" selection-end-column="53" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-            <element signature="e#13#112#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/vue/src/shared/util.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="57" column="29" lean-forward="false" selection-start-line="57" selection-start-column="16" selection-end-line="57" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/cssParser.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="2929" column="47" lean-forward="false" selection-start-line="2929" selection-start-column="47" selection-end-line="2929" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/jquery.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="3713" column="51" lean-forward="false" selection-start-line="3713" selection-start-column="51" selection-end-line="3713" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/vue/src/core/util/env.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-27">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/vue/src/core/util/props.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="165" column="25" lean-forward="false" selection-start-line="165" selection-start-column="25" selection-end-line="165" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/vue/src/core/util/perf.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/vue/src/core/util/options.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-27">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/vue/src/core/util/lang.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-27">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/vue/src/core/instance/init.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-896">
@@ -931,6 +714,127 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vue/src/core/instance/lifecycle.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="211" column="36" lean-forward="false" selection-start-line="211" selection-start-column="16" selection-end-line="211" selection-end-column="36" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vue/src/core/instance/render.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="86">
+          <caret line="25" column="26" lean-forward="false" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#13#111#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vue/src/core/util/debug.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-27">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vue/src/core/util/env.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-27">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vue/src/core/util/error.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-27">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vue/src/core/util/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vue/src/core/util/lang.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-27">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vue/src/core/util/next-tick.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-27">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vue/src/core/util/options.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#13#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vue/src/shared/util.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="58" column="18" lean-forward="false" selection-start-line="58" selection-start-column="9" selection-end-line="58" selection-end-column="18" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vue/src/core/observer/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-179">
+          <caret line="133" column="30" lean-forward="false" selection-start-line="133" selection-start-column="16" selection-end-line="133" selection-end-column="30" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#13#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/temp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3927">
+          <caret line="187" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="187" selection-end-column="0" />
           <folding />
         </state>
       </provider>
