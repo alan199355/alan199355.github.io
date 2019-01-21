@@ -142,4 +142,27 @@ vm._c = (a, b, c, d) => createElement(vm, a, b, c, d, false)
 // user-written render functions.
 vm.$createElement = (a, b, c, d) => createElement(vm, a, b, c, d, true)
 ```
-根据注释来看，为了保证渲染上下文正确，所以为当前实例绑定一个私有的createElement方法，参数顺序为tag，data，children，normalizationType，alwaysNormalize，这个方法是在模板编译时使用的。而下面的vm.$createElement方法是一个共有方法，是当用户手动调用render方法时用到的。
+根据注释来看，为了保证渲染上下文正确，所以为当前实例绑定一个私有的createElement方法，参数顺序为tag，data，children，normalizationType，alwaysNormalize，这个方法是在模板编译时使用的。而下面的vm.$createElement方法是一个公共方法，是当用户手动调用render方法时用到的。  
+接下来我们来看一下createElement的具体实现，它定义在`core/vdom/create-element.js`中
+```js
+// wrapper function for providing a more flexible interface
+// without getting yelled at by flow
+export function createElement (
+  context: Component,
+  tag: any,
+  data: any,
+  children: any,
+  normalizationType: any,
+  alwaysNormalize: boolean
+): VNode | Array<VNode> {
+  if (Array.isArray(data) || isPrimitive(data)) {
+    normalizationType = children
+    children = data
+    data = undefined
+  }
+  if (isTrue(alwaysNormalize)) {
+    normalizationType = ALWAYS_NORMALIZE
+  }
+  return _createElement(context, tag, data, children, normalizationType)
+}
+```
