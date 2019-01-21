@@ -130,3 +130,16 @@ export function resolveSlots (
   return slots
 }
 ```
+这里的代码首先判断children属性是否有值，如果没有就直接返回。之后遍历children数组，如果这个子节点已经被编译了，就去掉该节点的slot属性。再往下走，对于具名slot只有在同一上下文才会被渲染，不然就放到默认的slot中。如果该slot是模板，就需要存入该slot的子节点。最后去掉只包含空格的slot节点，然后返回slots对象。  
+接下来回到render.js
+```js
+// bind the createElement fn to this instance
+// so that we get proper render context inside it.
+// args order: tag, data, children, normalizationType, alwaysNormalize
+// internal version is used by render functions compiled from templates
+vm._c = (a, b, c, d) => createElement(vm, a, b, c, d, false)
+// normalization is always applied for the public version, used in
+// user-written render functions.
+vm.$createElement = (a, b, c, d) => createElement(vm, a, b, c, d, true)
+```
+根据注释来看，为了保证渲染上下文正确，所以为当前实例绑定一个私有的createElement方法，参数顺序为tag，data，children，normalizationType，alwaysNormalize，这个方法是在模板编译时使用的。而下面的vm.$createElement方法是一个共有方法，是当用户手动调用render方法时用到的。
