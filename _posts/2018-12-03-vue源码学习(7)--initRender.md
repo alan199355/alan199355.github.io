@@ -166,3 +166,132 @@ export function createElement (
   return _createElement(context, tag, data, children, normalizationType)
 }
 ```
+其实`createElement`就是对`_createElement`的封装，让接口更加灵活，最终还是让我们看下`_createElement`方法
+```js
+export function _createElement (
+  context: Component,
+  tag?: string | Class<Component> | Function | Object,
+  data?: VNodeData,
+  children?: any,
+  normalizationType?: number
+): VNode | Array<VNode> {
+  if (isDef(data) && isDef((data: any).__ob__)) {
+    process.env.NODE_ENV !== 'production' && warn(
+      `Avoid using observed data object as vnode data: ${JSON.stringify(data)}\n` +
+      'Always create fresh vnode data objects in each render!',
+      context
+    )
+    return createEmptyVNode()
+  }
+  // object syntax in v-bind
+  if (isDef(data) && isDef(data.is)) {
+    tag = data.is
+  }
+  if (!tag) {
+    // in case of component :is set to falsy value
+    return createEmptyVNode()
+  }
+  // warn against non-primitive key
+  if (process.env.NODE_ENV !== 'production' &&
+    isDef(data) && isDef(data.key) && !isPrimitive(data.key)
+  ) {
+    if (!__WEEX__ || !('@binding' in data.key)) {
+      warn(
+        'Avoid using non-primitive value as key, ' +
+        'use string/number value instead.',
+        context
+      )
+    }
+  }
+  // support single function children as default scoped slot
+  if (Array.isArray(children) &&
+    typeof children[0] === 'function'
+  ) {
+    data = data || {}
+    data.scopedSlots = { default: children[0] }
+    children.length = 0
+  }
+  if (normalizationType === ALWAYS_NORMALIZE) {
+    children = normalizeChildren(children)
+  } else if (normalizationType === SIMPLE_NORMALIZE) {
+    children = simpleNormalizeChildren(children)
+  }
+  let vnode, ns
+  if (typeof tag === 'string') {
+    let Ctor
+    ns = (context.$vnode && context.$vnode.ns) || config.getTagNamespace(tag)
+    if (config.isReservedTag(tag)) {
+      // platform built-in elements
+      vnode = new VNode(
+        config.parsePlatformTagName(tag), data, children,
+        undefined, undefined, context
+      )
+    } else if (isDef(Ctor = resolveAsset(context.$options, 'components', tag))) {
+      // component
+      vnode = createComponent(Ctor, data, context, children, tag)
+    } else {
+      // unknown or unlisted namespaced elements
+      // check at runtime because it may get assigned a namespace when its
+      // parent normalizes children
+      vnode = new VNode(
+        tag, data, children,
+        undefined, undefined, context
+      )
+    }
+  } else {
+    // direct component options / constructor
+    vnode = createComponent(tag, data, context, children)
+  }
+  if (Array.isArray(vnode)) {
+    return vnode
+  } else if (isDef(vnode)) {
+    if (isDef(ns)) applyNS(vnode, ns)
+    if (isDef(data)) registerDeepBindings(data)
+    return vnode
+  } else {
+    return createEmptyVNode()
+  }
+}
+```
+首先判断传入的data是否是响应式的，如果是就抛出警告，并通过`createEmptyVNode()`方法返回一个空的VNode。这个方法定义在`core/vdom/vnode.js`
+```js
+export const createEmptyVNode = (text: string = '') => {
+  const node = new VNode()
+  node.text = text
+  node.isComment = true
+  return node
+}
+```
+然后判断data属性是否有值，以及是否用v-bind绑定值，如果有就将值赋值给tag。
+之后为防止:is绑定了错误的值，会判断!tag是否为true，如果是就同样返回空的VNode。接下来是判断data的key是否是基础类型，如果不是就抛出报错。  
+再然后是如果children的第一个是函数类型，就将其作为默认的slot，并清空children。  
+接下来就是比较重要的功能，将children数组拍平成一维数组，分别调用了`normalizeChildren`和`simpleNormalizeChildren`，都定义在`core/vdom/helpers/normalize-children.js`中
+```js
+// 1. When the children contains components - because a functional component
+// may return an Array instead of a single root. In this case, just a simple
+// normalization is needed - if any child is an Array, we flatten the whole
+// thing with Array.prototype.concat. It is guaranteed to be only 1-level deep
+// because functional components already normalize their own children.
+export function simpleNormalizeChildren (children: any) {
+  for (let i = 0; i < children.length; i++) {
+    if (Array.isArray(children[i])) {
+      return Array.prototype.concat.apply([], children)
+    }
+  }
+  return children
+}
+
+// 2. When the children contains constructs that always generated nested Arrays,
+// e.g. <template>, <slot>, v-for, or when the children is provided by user
+// with hand-written render functions / JSX. In such cases a full normalization
+// is needed to cater to all possible types of children values.
+export function normalizeChildren (children: any): ?Array<VNode> {
+  return isPrimitive(children)
+    ? [createTextVNode(children)]
+    : Array.isArray(children)
+      ? normalizeArrayChildren(children)
+      : undefined
+}
+```
+`simpleNormalizeChildren`是在模板编译期间调用render函数会用到的。一般来说编译生成的children已经是VNode类型了，但有一个例外，就是`functional component`函数式组件返回了一个数组，因此通过concat方法将数组变成一维数组。  
+`normalizeChildren`一般有两种调用场景。一种是用户手写了render函数或是用了JSX，还有一种是<slot\>,v-for,<template\>产生嵌套数组的时候。`normalizeChildren`会判断children类型，如果是原始类型就创建一个文本节点，如果是数组就调用`normalizeArrayChildren`方法
