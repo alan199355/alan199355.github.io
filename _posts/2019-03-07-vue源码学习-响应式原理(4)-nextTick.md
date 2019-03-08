@@ -129,4 +129,5 @@ export function nextTick (cb?: Function, ctx?: Object) {
 ```
 在`nextTick`这个方法中，涉及到了微任务及宏任务相关的知识。根据注释来看，在2.4版本之前都是用的微任务，但是在有些场景下微任务的权重太高，可能会在连续的事件之间触发，甚至是在同一事件的冒泡过程中。但是全都用宏任务也有问题，比如状态刚好在重绘之前改变。所以vue默认使用微任务，但是暴露出方法在需要的时候强制使用宏任务，也就是`withMacroTask`方法。  
 回到代码，在宏任务的选择上，首先判断`setImmediate`是否可用，不过这个方法只在高版本的IE中才能用。如果不可用就判断`MessageChannel`是否可用，再不行就使用`setTimeout`。在微任务的选择上，首先判断`promise`是否可用，不行就和宏任务一样。  
-继续往下，看到`nextTick`方法。首先将传入的回调函数`cb`推入`callbacks`数组。然后通过`useMacroTask`来判断是使用宏任务还是微任务，最终执行`flushCallbacks`方法。`flushCallbacks`方法的逻辑很简单，首先复制`callbacks`的数据，然后将原`callbacks`数组清空，最后遍历数组，依次执行回调函数。
+继续往下，看到`nextTick`方法。首先将传入的回调函数`cb`推入`callbacks`数组。然后通过`useMacroTask`来判断是使用宏任务还是微任务，最终执行`flushCallbacks`方法。`flushCallbacks`方法的逻辑很简单，首先复制`callbacks`的数据，然后将原`callbacks`数组清空，最后遍历数组，依次执行回调函数。  
+这里使用`callbacks`数组而不是直接在`nextTick`中执行回调是为了保证在同一个tick中多次执行`nextTick`时，不会开启多个异步任务，只会有一个异步任务。
