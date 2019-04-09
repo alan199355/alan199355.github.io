@@ -172,5 +172,9 @@
   },
   "typings": "types/index.d.ts",
   "unpkg": "dist/vue.js",
-  "version": "2.5.17"
+  "version": "2.5.17",
+  "dependencies": {
+    "vue-router": "^3.0.3",
+    "vuex": "^3.1.0"
+  }
 }
