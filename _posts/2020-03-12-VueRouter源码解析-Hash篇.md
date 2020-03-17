@@ -229,7 +229,7 @@ function addRouteRecord(pathList, pathMap, nameMap, route, parent, matchAs) {
 
 这个方法其实就是遍历每一个路由，判断路由配置是否合法，并对正则匹配，大小写敏感等属性进行处理。如果存在子路由项，则递归遍历。其实在看上一个方法的时候，我一直在想 pathList，pathMap，nameMap 这些变量的值是哪来的，其实是在这个方法里。  
 那么这一条线就走完了，归纳下，就是遍历路由项配置，生成路由记录，路径记录，路由索引等。  
-接下来，继续回到`createMatcher`这个方法，之前说过这里还有几个方法还没有分析，现在我们来看下。
+接下来，继续回到`createMatcher`这个方法，之前说过这里还有几个方法还没有分析，现在我们来看下。首先看下 match 这个方法
 
 ```js
 function match(raw, currentRoute, redirectedFrom) {
@@ -285,109 +285,6 @@ function match(raw, currentRoute, redirectedFrom) {
   // no match
   return _createRoute(null, location)
 }
-
-function redirect(record, location) {
-  var originalRedirect = record.redirect
-  var redirect =
-    typeof originalRedirect === 'function'
-      ? originalRedirect(createRoute(record, location, null, router))
-      : originalRedirect
-
-  if (typeof redirect === 'string') {
-    redirect = { path: redirect }
-  }
-
-  if (!redirect || typeof redirect !== 'object') {
-    {
-      warn(false, 'invalid redirect option: ' + JSON.stringify(redirect))
-    }
-    return _createRoute(null, location)
-  }
-
-  var re = redirect
-  var name = re.name
-  var path = re.path
-  var query = location.query
-  var hash = location.hash
-  var params = location.params
-  query = re.hasOwnProperty('query') ? re.query : query
-  hash = re.hasOwnProperty('hash') ? re.hash : hash
-  params = re.hasOwnProperty('params') ? re.params : params
-
-  if (name) {
-    // resolved named direct
-    var targetRecord = nameMap[name]
-    {
-      assert(
-        targetRecord,
-        'redirect failed: named route "' + name + '" not found.'
-      )
-    }
-    return match(
-      {
-        _normalized: true,
-        name: name,
-        query: query,
-        hash: hash,
-        params: params
-      },
-      undefined,
-      location
-    )
-  } else if (path) {
-    // 1. resolve relative redirect
-    var rawPath = resolveRecordPath(path, record)
-    // 2. resolve params
-    var resolvedPath = fillParams(
-      rawPath,
-      params,
-      'redirect route with path "' + rawPath + '"'
-    )
-    // 3. rematch with existing query and hash
-    return match(
-      {
-        _normalized: true,
-        path: resolvedPath,
-        query: query,
-        hash: hash
-      },
-      undefined,
-      location
-    )
-  } else {
-    {
-      warn(false, 'invalid redirect option: ' + JSON.stringify(redirect))
-    }
-    return _createRoute(null, location)
-  }
-}
-
-function alias(record, location, matchAs) {
-  var aliasedPath = fillParams(
-    matchAs,
-    location.params,
-    'aliased route with path "' + matchAs + '"'
-  )
-  var aliasedMatch = match({
-    _normalized: true,
-    path: aliasedPath
-  })
-  if (aliasedMatch) {
-    var matched = aliasedMatch.matched
-    var aliasedRecord = matched[matched.length - 1]
-    location.params = aliasedMatch.params
-    return _createRoute(aliasedRecord, location)
-  }
-  return _createRoute(null, location)
-}
-
-function _createRoute(record, location, redirectedFrom) {
-  if (record && record.redirect) {
-    return redirect(record, redirectedFrom || location)
-  }
-  if (record && record.matchAs) {
-    return alias(record, location, record.matchAs)
-  }
-  return createRoute(record, location, redirectedFrom, router)
-}
 ```
+
+这个方法主要是用来判断当前路由是否匹配的，首先通过`normalizeLocation`方法生成当前路由的信息，这里的 raw 根据我结合上下文来看，应该有两种情况。一种是直接修改 url 并刷新或者使用 js 修改 hash，一种就是我们用的`this.$router.push()`。第一种情况，raw 的值应该就是当前的路径，而第二种就是 push 方法中传入的对象值。如果是通过修改 url 的方式，且当前 url 未被记录过，那就会走到`else if(location.path)`这一步，然后遍历路径列表，如果能存在该路径，则调用`_createRoute`方法。而如果是通过 push 方法或者该路径已存在，那就进入第一步。
