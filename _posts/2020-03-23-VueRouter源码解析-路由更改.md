@@ -58,4 +58,145 @@ tags:
 主要看这两个方法，一个是根据当前设备是否支持设置相应的事件监听器，在路由改变后调用`this.transitionTo`方法，而`push`方法也是一样，只是`push`方法的路由是传入的。那我们就继续来看下`transitionTo`方法，代码定义在`src/history/base.js`
 
 ```js
+transitionTo (
+    location: RawLocation,
+    onComplete?: Function,
+    onAbort?: Function
+  ) {
+    const route = this.router.match(location, this.current)
+    this.confirmTransition(
+      route,
+      () => {
+        this.updateRoute(route)
+        onComplete && onComplete(route)
+        this.ensureURL()
+
+        // fire ready cbs once
+        if (!this.ready) {
+          this.ready = true
+          this.readyCbs.forEach(cb => {
+            cb(route)
+          })
+        }
+      },
+      err => {
+        if (onAbort) {
+          onAbort(err)
+        }
+        if (err && !this.ready) {
+          this.ready = true
+          this.readyErrorCbs.forEach(cb => {
+            cb(err)
+          })
+        }
+      }
+    )
+  }
+```
+
+这个方法首先通过路由对象的 match 方法得到将要跳转的路由对象，然后调用`confirmTransition`方法，如果成功，更新当前的 route 对象并更新 url，然后出发事件回调。同样的，对于报错也有处理。那现在继续来看下`confirmTransition`这个方法。
+
+```js
+ confirmTransition (route: Route, onComplete: Function, onAbort?: Function) {
+    const current = this.current
+    const abort = err => {
+      // after merging https://github.com/vuejs/vue-router/pull/2771 we
+      // When the user navigates through history through back/forward buttons
+      // we do not want to throw the error. We only throw it if directly calling
+      // push/replace. That's why it's not included in isError
+      if (!isExtendedError(NavigationDuplicated, err) && isError(err)) {
+        if (this.errorCbs.length) {
+          this.errorCbs.forEach(cb => {
+            cb(err)
+          })
+        } else {
+          warn(false, 'uncaught error during route navigation:')
+          console.error(err)
+        }
+      }
+      onAbort && onAbort(err)
+    }
+    if (
+      isSameRoute(route, current) &&
+      // in the case the route map has been dynamically appended to
+      route.matched.length === current.matched.length
+    ) {
+      this.ensureURL()
+      return abort(new NavigationDuplicated(route))
+    }
+
+    const { updated, deactivated, activated } = resolveQueue(
+      this.current.matched,
+      route.matched
+    )
+
+    const queue: Array<?NavigationGuard> = [].concat(
+      // in-component leave guards
+      extractLeaveGuards(deactivated),
+      // global before hooks
+      this.router.beforeHooks,
+      // in-component update hooks
+      extractUpdateHooks(updated),
+      // in-config enter guards
+      activated.map(m => m.beforeEnter),
+      // async components
+      resolveAsyncComponents(activated)
+    )
+
+    this.pending = route
+    const iterator = (hook: NavigationGuard, next) => {
+      if (this.pending !== route) {
+        return abort()
+      }
+      try {
+        hook(route, current, (to: any) => {
+          if (to === false || isError(to)) {
+            // next(false) -> abort navigation, ensure current URL
+            this.ensureURL(true)
+            abort(to)
+          } else if (
+            typeof to === 'string' ||
+            (typeof to === 'object' &&
+              (typeof to.path === 'string' || typeof to.name === 'string'))
+          ) {
+            // next('/') or next({ path: '/' }) -> redirect
+            abort()
+            if (typeof to === 'object' && to.replace) {
+              this.replace(to)
+            } else {
+              this.push(to)
+            }
+          } else {
+            // confirm transition and pass on the value
+            next(to)
+          }
+        })
+      } catch (e) {
+        abort(e)
+      }
+    }
+
+    runQueue(queue, iterator, () => {
+      const postEnterCbs = []
+      const isValid = () => this.current === route
+      // wait until async components are resolved before
+      // extracting in-component enter guards
+      const enterGuards = extractEnterGuards(activated, postEnterCbs, isValid)
+      const queue = enterGuards.concat(this.router.resolveHooks)
+      runQueue(queue, iterator, () => {
+        if (this.pending !== route) {
+          return abort()
+        }
+        this.pending = null
+        onComplete(route)
+        if (this.router.app) {
+          this.router.app.$nextTick(() => {
+            postEnterCbs.forEach(cb => {
+              cb()
+            })
+          })
+        }
+      })
+    })
+  }
 ```
