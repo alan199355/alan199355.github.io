@@ -201,4 +201,30 @@ transitionTo (
   }
 ```
 
-这个方法首先判断是否是相同的路由。如果是相同的则更新 url 并抛出报错。如果是新路由，则调用 Vue 组件生命周期钩子函数及路由钩子函数。从代码上来看依次是组件离开守卫，全局进入前钩子，组件更新钩子，路由进入守卫，还有异步组件
+这个方法首先判断是否是相同的路由。如果是相同的则更新 url 并抛出报错。如果是新路由，则调用 Vue 组件生命周期钩子函数及路由钩子函数。从代码上来看依次是组件离开守卫，全局进入前钩子，组件更新钩子，路由进入守卫，还有异步组件。并且会判断新旧路由是否有相同的组件，如果有相同组件，则调用`updated`方法，否则调用`activated`和`deactived`方法，如`resolveQueue`方法
+
+```js
+function resolveQueue(
+  current: Array<RouteRecord>,
+  next: Array<RouteRecord>
+): {
+  updated: Array<RouteRecord>,
+  activated: Array<RouteRecord>,
+  deactivated: Array<RouteRecord>
+} {
+  let i
+  const max = Math.max(current.length, next.length)
+  for (i = 0; i < max; i++) {
+    if (current[i] !== next[i]) {
+      break
+    }
+  }
+  return {
+    updated: next.slice(0, i),
+    activated: next.slice(i),
+    deactivated: current.slice(i)
+  }
+}
+```
+
+通过判断路由记录是否相同得到需要更新的子路由列表。然后就是依次执行各种钩子函数。
