@@ -20,7 +20,7 @@
         "watch": "grunt watch & npm run preview & jekyll serve -w;"
     },
     "dependencies": {
-        "jquery": "^3.2.1",
+        "jquery": "^3.5.0",
         "vue": "^2.5.17"
     }
 }
